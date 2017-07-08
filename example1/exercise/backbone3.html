@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>backbone2 test</title>
+	<meta charset="utf-8">
+	<script src="../libs/jquery-1.8.3.min.js"></script>
+    <script src="../libs/underscore.js"></script>
+    <script src="../libs/backbone.js"></script>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+var Book = Backbone.Model.extend({
+	defaults:{
+		title:"he"
+	},
+	initialize:function(){
+
+	}
+})
+
+var BookShelf = Backbone.Collection.extend({
+	model:Book,
+	url:"/book/",
+})
+ var book1 = new Book({"title":"book1"});
+ var book2 = new Book({"title":"book2"});
+ var book3 = new Book({"title":"book3"});
+
+ var bookShelf = new BookShelf();
+ bookShelf.add(book1);
+ bookShelf.add(book2);
+ bookShelf.add(book3);
+
+ bookShelf.each(function(book){
+ 	console.log(book.get("title"));
+ //	console.log(1)
+ })
+
+ bookShelf.url = "/books/";
+ bookShelf.fetch({
+ 	success:function(collection,response,options){
+ 		collection.each(function(book){
+ 			alert(book.get("title"));
+ 		})
+ 	},
+ 	error:function(collection,response,options){
+ 		alert("error");
+ 	}
+ })
+</script>
+
+</html>
