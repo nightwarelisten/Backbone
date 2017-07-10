@@ -5,6 +5,7 @@ define(['backbone'], function () {
         routes: {
             'module1': 'module1',
             'module2(/:name)': 'module2',
+            'module3':'module3',
             '*actions': 'defaultAction'
         },
 
@@ -27,7 +28,9 @@ define(['backbone'], function () {
                 controller(name);
             });
         },
-
+        module3: function(){
+            alert("232432");
+        },
         defaultAction: function () {
             console.log('404');
          //   location.hash = 'module2';
