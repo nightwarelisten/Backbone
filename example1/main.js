@@ -33,7 +33,7 @@
     require.config(config);
 
     //Backbone会把自己加到全局变量中
-    require(['backbone', 'underscore', 'router'], function(){
+    require(['backbone', 'underscore', 'router',"text"], function(){
         Backbone.history.start();   //开始监控url变化
     });
 

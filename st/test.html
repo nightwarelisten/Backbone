@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>the5fire.com-backbone.js-Hello World</title>
+	<title></title>
+	<meta charset="utf-8">
 </head>
 <body>
-    <button id="check">新手报到</button>
-    <ul id="world-list">
-    </ul>
-    <a href="http://www.the5fire.com">更多教程</a>
-    <script src="../libs/jquery-1.8.3.min.js"></script>
-    <script src="../libs/underscore.js"></script>
-    <script src="../libs/backbone.js"></script>
-    <script>
-    (function ($) {
+<button id="check">新手报到</button>
+<ul id="world-list">
+</ul>
+</body>
+<script type="text/javascript" src="libs/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="libs/underscore.js" ></script>
+<script type="text/javascript" src="libs/backbone.js" ></script>
+<script type="text/javascript"  >
+(function ($) {
         World = Backbone.Model.extend({
             //创建一个World的对象，拥有name属性
             name: null
@@ -24,7 +25,7 @@
                     this.bind("add", options.view.addOneWorld);
             }
         });
-       
+
         AppView = Backbone.View.extend({
             el: $("body"),
             initialize: function () {
@@ -47,8 +48,7 @@
             }
         });
         //实例化AppView
-        var appview = new AppView;
-    })(jQuery);
-    </script>
-</body>
+        var appview = new AppView();
+ })(jQuery);       
+</script>
 </html>
