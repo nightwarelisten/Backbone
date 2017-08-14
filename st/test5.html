@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+    <a href="#/default/">default</a>
+    <a href="#/posts/120">Post 120</a>
+    <a href="#/download/user/images/hey.gif">download gif</a>
+    <a href="#/dashboard/graph">Load Route/Action View</a>
+    <br/>
+    <a href="#/manual">Manual</a>
+</body>
+<script type="text/javascript" src="libs/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="libs/underscore.js" ></script>
+<script type="text/javascript" src="libs/backbone.js" ></script>
+<script type="text/javascript"  >
+(function ($) {
+        //从上面已经可以看到匹配#标签之后内容的方法，有两种：一种是用“:”来把#后面的对应的位置作为参数；还有一种是“*”，它可以匹配所有的url，下面再来演练一下。
+        //
+       
+        /*var AppRouter = Backbone.Router.extend({
+            routes: {
+                "posts/:id" : "getPost",
+                "download/*path": "downloadFile",  //对应的链接为<a href="#/download/user/images/hey.gif">download gif</a>
+                ":route/:action": "loadView",      //对应的链接为<a href="#/dashboard/graph">Load Route/Action View</a>
+                "manual": "manual",
+                "*actions": "defaultRoute",
+            },
+            getPost: function(id) {
+                alert(id);
+            },
+            defaultRoute : function(actions){
+                alert(actions+'SDF');
+            },
+            downloadFile: function( path ){ 
+                alert(path); // user/images/hey.gif 
+            },
+            loadView: function( route, action ){ 
+                alert(route + "_" + action); // dashboard_graph 
+            },
+            manual: function() {
+                this.navigate("/posts/" + 404, {trigger: true, replace: true});
+            }
+        });
+        
+        var app_router = new AppRouter;
+        
+        Backbone.history.start();*/
+        
+
+        //
+        var AppRouter =  Backbone.Router.extend({
+            routes:{
+                "posts/:id":"getPost",
+                "download/*path":"downloadFile",
+                ":route/:action":"loadView",
+                "manual":"manual",
+                "*actions":"defaultRoute",
+              
+            },
+            getPost:function(id){
+                alert(id);
+            },
+            downloadFile:function(action){
+                alert(action);
+            },
+            loadView:function(route,action){
+                alert(route+"_"+ action);
+            },
+            manual:function(){
+                this.navigate("/posts/"+ 404,{trigger:true,replace:true});
+            },
+            defaultRoute:function(action){
+                alert(action);
+            }
+        })
+        var app_router = new AppRouter;
+        Backbone.history.start();
+    })(jQuery);
+    </script>
+    </body>
+</html>

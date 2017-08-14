@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+<button id="check">新手报到</button>
+<ul id="world-list">
+</ul>
+</body>
+<script type="text/javascript" src="libs/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="libs/underscore.js" ></script>
+<script type="text/javascript" src="libs/backbone.js" ></script>
+<script type="text/javascript"  >
+(function($){
+var AppRouter = Backbone.Router.extend({
+    routes:{
+        "posts/:id":"getPost",
+        "download/*path":"downloadFile",
+        ":route/action":"loadView",
+        "*actions":"defaultRoute"
+    },
+    getPost:function(id){
+        alert(id);
+    },
+    downloadFile:function(actions){
+        alert(actions);
+    },
+    loadView:function(path){
+        alert(path);
+    },
+    
+    defaultRoute:function(action){
+        alert(action);
+    }
+})
+var app_router = new AppRouter ;
+Backbone.history.start();
+})(jQuery);
+</script>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+<button id="check">新手报到</button>
+<ul id="world-list">
+</ul>
+</body>
+<script type="text/javascript" src="libs/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="libs/underscore.js" ></script>
+<script type="text/javascript" src="libs/backbone.js" ></script>
+<script type="text/javascript"  >
+(function($){
+var Book = Backbone.Model.extend({
+    defaults:{
+        title:"defaults",
+    },
+    initialize:function(){
+
+    }
+})
+var BookShelf = Backbone.Collection.extend({
+    model:Book,
+})
+var book1 = new Book({title:"book1"});
+var book2 = new Book({title:"book2"});
+var bookshelf = new BookShelf;
+bookshelf.add(book1);
+bookshelf.add(book2);
+bookshelf.each(function(book){
+    alert(book.get("title"));
+});
+var showAllBooks = function(){
+    bookshelf.each(function(book){
+        document.writeln
+    })
+}
+bookself.bind("reset",showAllBooks);
+bookshelf.url="/books/";
+
+bookshelf.fetch({
+    reset:true,
+    success:function(collection,response,options){
+        collection.each(function(book){
+            alert(book.get("title"));
+        })
+    },
+    error:function(collection,response,options){
+        alert("error");
+    }
+})
+})(jQuery);
+</script>
+</html>

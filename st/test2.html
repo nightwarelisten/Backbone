@@ -15,28 +15,40 @@
 <script type="text/javascript"  >
 (function($){
 var Man = Backbone.Model.extend({
+    url:'/man/',
     initialize:function(){
         this.bind("change:name",function(){
             var name = this.get("name");
-            alert("name 修改"+ this.get("name"));
+            alert("改变了name" + name);
         });
         this.bind("invalid",function(model,error){
             alert(error);
         })
     },
     defaults:{
-        name:"hehe",
-        age:"2343",
+        name:"test",
+        age:"123",
     },
     validate:function(attributes){
         if(attributes.name == ""){
-            return "name不能为空！";
+            return "name不能为空";
         }
     }
 
-});
-var  man = new Man();
-man.set({name:""},{validate:true});
+})
+var man = new Man;
+man.set({"name":""},{validate:true});
+var man1 =  new Man ;
+man1.fetch({
+    url:'/man/',
+    success:function(model,response){
+        alert("success");
+        alert(model.get("name"));
+    },
+    error:function(){
+        
+    }
+})
 })(jQuery);
 </script>
 </html>
