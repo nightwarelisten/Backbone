@@ -1,8 +1,8 @@
-define(["text!module2/tpl.html"], function (tpl) {
+define(["text!module2/tpl.html","text!module2/tpl.html"], function (tpl,tpl1) {
 
     var View1 = Backbone.View.extend({
         el: '#container',
-        template : _.template(tpl),
+        template : {"tpl":_.template(tpl), "tpl1":_.template(tpl1)},
         events:{
         	"click  p":"newtrans",
         	"change #test":"test",
@@ -12,7 +12,9 @@ define(["text!module2/tpl.html"], function (tpl) {
         },
 
         render: function (name) {
-            this.$el.html(this.template({name: name}));
+            
+            this.$el.html(this.template.tpl({name: name}));
+            this.$el.append(this.template.tpl1({name:"bitch"}));
         },
 
         newtrans : function(){
