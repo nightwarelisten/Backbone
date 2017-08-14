@@ -4,13 +4,14 @@ define(['backbone'], function () {
 
         routes: {
             'module1': 'module1',
-            'module2(/:name)': 'module2',
+            'module2': 'module2',
             'module3':'module3',
             '*actions': 'defaultAction'
         },
 
         //路由初始化可以做一些事
         initialize: function () {
+
         },
 
         module1: function() {
@@ -25,7 +26,7 @@ define(['backbone'], function () {
         module2: function(name) {
             var url = 'module2/controller2.js';
             require([url], function (controller) {
-                controller(name);
+                controller();
             });
         },
         module3: function(){
