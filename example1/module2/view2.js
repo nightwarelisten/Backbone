@@ -1,4 +1,4 @@
-define(["text!module2/tpl.html","text!module2/tpl.html"], function (tpl,tpl1) {
+define(["text!module2/tpl.html","text!module2/tpl.html"], function (tpl,tpl1,) {
 
     var View1 = Backbone.View.extend({
         el: '#container',

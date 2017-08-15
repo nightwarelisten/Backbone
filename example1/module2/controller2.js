@@ -1,9 +1,9 @@
-define(['module2/view2'], function (View) {
+define(['module2/view2','module2/model1'], function (View,Model) {
 
     var controller = function () {
         var view = new View();
-       
-        view.render('小石头');
+       	var model = new Model();
+        view.render(model.get("name"));
     };
     return controller;
 });
