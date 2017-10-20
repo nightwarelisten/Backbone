@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<meta charset="utf-8">
+	<title>Backbone test</title>
+	<link rel="stylesheet" type="text/css" href="test.css">
 </head>
 <body>
-
+<div id="contain" >
+	<ul id="todo-list" ></ul>
+</div>
 </body>
-<script type="text/javascript">
-console.log(b);
-function a (){
-	this.test = 23432;
+<script src="../../test/vendor/json2.js"></script>
+<script src="../../test/vendor/jquery.js"></script>
+<script src="../../test/vendor/underscore.js"></script>
+<script src="../../backbone.js"></script>
+<script src="../backbone.localStorage.js"></script>
+<script type="text/javascript" src="test.js" ></script>
+ <script type="text/template" id="item-template">
+    <div class="view">
+      <input class="toggle" type="checkbox" <%= done ? 'checked="checked"' : '' %> />
+      <label><%- title %></label>
+      <a class="destroy">x</a>
+    </div>
+    <input class="edit" type="text" value="<%- title %>" />
+  </script>
+<script type="text/template" id="onepice" >
+	<div class="view" >
+		<input class="toggle" type="checkbox" <% = done ? 'checked="checked"' : ''%>  />
+		<label><%- title %></label>
+		<a class="destroy" ></a>
+	</div>
+	<input class="edit" type="text" value="<%- title %>" />
 	
-}
-var b = new a();
-console.log(b.test);
 </script>
+
+
 </html>

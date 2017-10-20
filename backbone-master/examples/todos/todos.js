@@ -84,7 +84,7 @@ $(function(){
       "dblclick .view"  : "edit",
       "click a.destroy" : "clear",
       "keypress .edit"  : "updateOnEnter",
-      "blur .edit"      : "close"
+      "blur a.edit"      : "close"
     },
 
     // The TodoView listens for changes to its model, re-rendering. Since there's
@@ -165,7 +165,7 @@ $(function(){
       this.input = this.$("#new-todo");
       this.allCheckbox = this.$("#toggle-all")[0];
 
-      this.listenTo(Todos, 'add', this.addOne);
+      this.listenTo(Todos, 'add',this.addOne);
       this.listenTo(Todos, 'reset', this.addAll);
       this.listenTo(Todos, 'all', this.render);
 
